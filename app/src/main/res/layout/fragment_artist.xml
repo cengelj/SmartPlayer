@@ -4,12 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Artists_Parts.ArtistFragment">
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+            <com.apps.t80088.smartplayer.Artists_Parts.ArtistLayout
+                android:id="@+id/table"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:stretchColumns="*"
+                android:clipChildren="true">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </TableRow>
+            </com.apps.t80088.smartplayer.Artists_Parts.ArtistLayout>
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

@@ -91,31 +91,36 @@ public class HomePage extends AppCompatActivity
         switch(id){
             case R.id.nav_albums:
                 Toast.makeText(this, "Albums", Toast.LENGTH_SHORT).show();
+                getSupportActionBar().setTitle("Albums");
                 Fragment albums = new AlbumFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, albums).commit();
 
                 break;
             case R.id.nav_artists:
+                getSupportActionBar().setTitle("Artists");
                 Toast.makeText(this, "Artists", Toast.LENGTH_SHORT).show();
 
                 Fragment artists = new ArtistFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, artists).commit();
                 break;
             case R.id.nav_playlists:
+                getSupportActionBar().setTitle("Playlists");
                 Toast.makeText(this, "Playlists", Toast.LENGTH_SHORT).show();
                 Fragment playlists = new PlaylistsFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, playlists).commit();
                 break;
             case R.id.nav_songs:
+                getSupportActionBar().setTitle("Songs");
                 Toast.makeText(this, "Songs", Toast.LENGTH_SHORT).show();
                 Fragment songs = new SongsFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, songs).commit();
                 break;
             case R.id.nav_report_bug:
+                getSupportActionBar().setTitle("Bug Report");
                 Toast.makeText(this, "Report Bug", Toast.LENGTH_SHORT).show();
                 break;
             default:
-                Toast.makeText(this, "This shouldn't be possible", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "This shouldn't be possible, please report this including steps to reproduce", Toast.LENGTH_SHORT).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -16,6 +16,7 @@ import android.widget.TableRow;
 import com.apps.t80088.smartplayer.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class AlbumLayout extends TableLayout {
     private Context context;
@@ -31,6 +32,7 @@ public class AlbumLayout extends TableLayout {
         this.context = context;
     }
     public void addAlbums(ArrayList<String> albums){
+        Collections.reverse(albums);
         for(int i=0;i<albums.size();i+=2){
             // 2 albums per row, so do 2 at a time
             TableRow row = new TableRow(context);
@@ -41,14 +43,15 @@ public class AlbumLayout extends TableLayout {
             leftAlbum.setScaleType(ImageView.ScaleType.FIT_CENTER);
             leftAlbum.setLayoutDirection(LAYOUT_DIRECTION_RTL);
             leftAlbum.setBackgroundColor(Color.TRANSPARENT);
-
-            ImageButton rightAlbum = new ImageButton(getContext());
-            rightAlbum.setImageResource(R.drawable.ic_album);       // To-Do: In final version replace this with album art
-            rightAlbum.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            rightAlbum.setBackgroundColor(Color.TRANSPARENT);
-
             row.addView(leftAlbum, (new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, 500)));
-            row.addView(rightAlbum, (new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, 500)));
+
+            if(i+1 < albums.size()) {
+                ImageButton rightAlbum = new ImageButton(getContext());
+                rightAlbum.setImageResource(R.drawable.ic_album);       // To-Do: In final version replace this with album art
+                rightAlbum.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                rightAlbum.setBackgroundColor(Color.TRANSPARENT);
+                row.addView(rightAlbum, (new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, 500)));
+            }
 
             this.addView(row, i%2);
         }

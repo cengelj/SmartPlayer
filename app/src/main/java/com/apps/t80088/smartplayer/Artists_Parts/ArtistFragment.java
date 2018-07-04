@@ -3,12 +3,17 @@ package com.apps.t80088.smartplayer.Artists_Parts;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.apps.t80088.smartplayer.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,6 +48,17 @@ public class ArtistFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_artist, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        ArrayList<String> artists = new ArrayList<String>();
+        for(int i=0;i<30;i++)
+            artists.add("Artist"+i);
+        ArtistLayout table = getView().findViewById(R.id.table);
+        table.addArtists(artists);
     }
 
     // TODO Need to change later
