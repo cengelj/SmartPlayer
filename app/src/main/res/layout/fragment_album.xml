@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Album_Parts.AlbumFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <ScrollView
         android:id="@+id/scroll"

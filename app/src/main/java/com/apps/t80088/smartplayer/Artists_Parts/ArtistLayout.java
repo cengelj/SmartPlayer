@@ -44,7 +44,7 @@ public class ArtistLayout extends TableLayout {
             leftArtist.setBackgroundResource(R.drawable.ic_library);
             leftArtist.setText(artists.get(i));                           //ToDo replace with info grabbed from library.
             leftArtist.setTextAlignment(TEXT_ALIGNMENT_CENTER);
-            leftArtist.setLayoutDirection(LAYOUT_DIRECTION_RTL);
+            leftArtist.setLayoutDirection(LAYOUT_DIRECTION_LTR);
             leftArtist.setTextColor(Color.GRAY);
             row.addView(leftArtist, (new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, 500)));
 
@@ -54,7 +54,7 @@ public class ArtistLayout extends TableLayout {
                 rightArtist.setText(artists.get(i+1));
                 rightArtist.setTextAlignment(TEXT_ALIGNMENT_CENTER);
                 rightArtist.setTextColor(Color.GRAY);
-                rightArtist.setLayoutDirection(LAYOUT_DIRECTION_RTL);
+                rightArtist.setLayoutDirection(LAYOUT_DIRECTION_LTR);
                 row.addView(rightArtist, (new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, 500)));
             }
 

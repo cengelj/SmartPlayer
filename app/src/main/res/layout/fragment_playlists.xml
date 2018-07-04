@@ -3,12 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Playlist_Parts.PlaylistsFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_playlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_playlist_add"
+        android:background="@color/colorPrimary"/>
+    <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+
+            <com.apps.t80088.smartplayer.Playlist_Parts.PlaylistsLayout
+                android:id="@+id/table"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:stretchColumns="*"
+                android:clipChildren="true">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </TableRow>
+            </com.apps.t80088.smartplayer.Playlist_Parts.PlaylistsLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

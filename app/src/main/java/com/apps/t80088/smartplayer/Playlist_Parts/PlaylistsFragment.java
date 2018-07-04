@@ -3,21 +3,20 @@ package com.apps.t80088.smartplayer.Playlist_Parts;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.apps.t80088.smartplayer.Artists_Parts.ArtistLayout;
 import com.apps.t80088.smartplayer.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link PlaylistsFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link PlaylistsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class PlaylistsFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
@@ -43,6 +42,24 @@ public class PlaylistsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_playlists, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        FloatingActionButton fab = (FloatingActionButton) getView().findViewById(R.id.add_playlist);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Place playlist creation screen here", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        ArrayList<String> playlists = new ArrayList<String>();
+        for(int i=0;i<30;i++)
+            playlists.add("Playlist"+i);
+        PlaylistsLayout table = getView().findViewById(R.id.table);
+        table.addPlaylists(playlists);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
