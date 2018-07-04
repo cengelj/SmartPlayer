@@ -18,25 +18,24 @@
             android:layout_height="wrap_content"
             xmlns:android="http://schemas.android.com/apk/res/android">
 
-            <TableLayout
+            <com.apps.t80088.smartplayer.AlbumLayout
                 android:id="@+id/table"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:stretchColumns="*"
                 android:clipChildren="true">
-
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
 
                     <ImageButton
                         android:id="@+id/imageButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_jtgsafetravels" />
+
                 </TableRow>
-            </TableLayout>
+            </com.apps.t80088.smartplayer.AlbumLayout>
         </LinearLayout>
     </ScrollView>
 

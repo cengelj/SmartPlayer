@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
@@ -56,33 +57,15 @@ public class AlbumFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // Fill the table with albums
-        TableLayout table = getView().findViewById(R.id.table);
+        AlbumLayout table = getView().findViewById(R.id.table);
+
 
         ArrayList<String> albums = new ArrayList<String>();
-
         // Temp for testing
         for(int i=0;i<30;i++)
             albums.add("One");
+        table.addAlbums(albums);
 
-
-        for(int i=0;i<albums.size();i+=2){
-            // 2 albums per row, so do 2 at a time
-            TableRow row = new TableRow(getContext());
-            row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-
-            ImageButton leftAlbum = new ImageButton(getContext());
-            leftAlbum.setImageResource(R.drawable.ic_jtgsafetravels);
-            leftAlbum.setLayoutParams(new ViewGroup.LayoutParams(1000, 1000));
-
-            ImageButton rightAlbum = new ImageButton(getContext());
-            rightAlbum.setImageResource(R.drawable.ic_album);       // In final version replace this with album art
-            rightAlbum.setLayoutParams(new ViewGroup.LayoutParams(1000, 1000));
-
-            row.addView(leftAlbum, (new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT)));
-            row.addView(rightAlbum, (new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT)));
-
-            table.addView(row, i%2);
-        }
     }
 
     // Touch later
