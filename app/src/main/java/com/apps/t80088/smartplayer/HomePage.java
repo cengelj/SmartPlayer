@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,8 +17,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.apps.t80088.smartplayer.Album_Parts.AlbumFragment;
+import com.apps.t80088.smartplayer.Artists_Parts.ArtistFragment;
+import com.apps.t80088.smartplayer.Playlist_Parts.PlaylistsFragment;
+import com.apps.t80088.smartplayer.Songs_Parts.SongsFragment;
+
 public class HomePage extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, AlbumFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, AlbumFragment.OnFragmentInteractionListener, ArtistFragment.OnFragmentInteractionListener, SongsFragment.OnFragmentInteractionListener, PlaylistsFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +76,7 @@ public class HomePage extends AppCompatActivity
         switch(id){
             case R.id.action_settings:
                 Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
-                break;
-        }
-
-        if (id == R.id.action_settings) {
-            return true;
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -88,15 +91,25 @@ public class HomePage extends AppCompatActivity
         switch(id){
             case R.id.nav_albums:
                 Toast.makeText(this, "Albums", Toast.LENGTH_SHORT).show();
+                Fragment albums = new AlbumFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, albums).commit();
+
                 break;
             case R.id.nav_artists:
                 Toast.makeText(this, "Artists", Toast.LENGTH_SHORT).show();
+
+                Fragment artists = new ArtistFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, artists).commit();
                 break;
             case R.id.nav_playlists:
                 Toast.makeText(this, "Playlists", Toast.LENGTH_SHORT).show();
+                Fragment playlists = new PlaylistsFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, playlists).commit();
                 break;
             case R.id.nav_songs:
                 Toast.makeText(this, "Songs", Toast.LENGTH_SHORT).show();
+                Fragment songs = new SongsFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, songs).commit();
                 break;
             case R.id.nav_report_bug:
                 Toast.makeText(this, "Report Bug", Toast.LENGTH_SHORT).show();

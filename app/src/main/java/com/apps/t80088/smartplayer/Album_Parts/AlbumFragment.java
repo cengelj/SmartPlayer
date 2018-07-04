@@ -1,21 +1,16 @@
-package com.apps.t80088.smartplayer;
+package com.apps.t80088.smartplayer.Album_Parts;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+
+import com.apps.t80088.smartplayer.R;
 
 import java.util.ArrayList;
 
@@ -56,10 +51,9 @@ public class AlbumFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // Fill the table with albums
         AlbumLayout table = getView().findViewById(R.id.table);
 
-
+        // Populate table
         ArrayList<String> albums = new ArrayList<String>();
         // Temp for testing
         for(int i=0;i<30;i++)

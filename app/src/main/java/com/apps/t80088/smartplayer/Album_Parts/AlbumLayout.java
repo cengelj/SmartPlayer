@@ -1,13 +1,19 @@
-package com.apps.t80088.smartplayer;
+package com.apps.t80088.smartplayer.Album_Parts;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Outline;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+
+import com.apps.t80088.smartplayer.R;
 
 import java.util.ArrayList;
 
@@ -17,6 +23,7 @@ public class AlbumLayout extends TableLayout {
     public AlbumLayout(Context context) {
         super(context);
         this.context = context;
+        this.setBackgroundColor(Color.TRANSPARENT);
     }
 
     public AlbumLayout(Context context, AttributeSet attrs) {
@@ -33,10 +40,12 @@ public class AlbumLayout extends TableLayout {
             leftAlbum.setImageResource(R.drawable.ic_jtgsafetravels);
             leftAlbum.setScaleType(ImageView.ScaleType.FIT_CENTER);
             leftAlbum.setLayoutDirection(LAYOUT_DIRECTION_RTL);
+            leftAlbum.setBackgroundColor(Color.TRANSPARENT);
 
             ImageButton rightAlbum = new ImageButton(getContext());
             rightAlbum.setImageResource(R.drawable.ic_album);       // To-Do: In final version replace this with album art
             rightAlbum.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            rightAlbum.setBackgroundColor(Color.TRANSPARENT);
 
             row.addView(leftAlbum, (new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, 500)));
             row.addView(rightAlbum, (new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, 500)));

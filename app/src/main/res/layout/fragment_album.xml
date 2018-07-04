@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AlbumFragment">
+    tools:context=".Album_Parts.AlbumFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             xmlns:android="http://schemas.android.com/apk/res/android">
 
-            <com.apps.t80088.smartplayer.AlbumLayout
+            <com.apps.t80088.smartplayer.Album_Parts.AlbumLayout
                 android:id="@+id/table"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -35,7 +35,7 @@
                         android:src="@drawable/ic_jtgsafetravels" />
 
                 </TableRow>
-            </com.apps.t80088.smartplayer.AlbumLayout>
+            </com.apps.t80088.smartplayer.Album_Parts.AlbumLayout>
         </LinearLayout>
     </ScrollView>
 
