@@ -11,4 +11,7 @@
     <string name="playlists">Playlists</string>
     <string name="songs">Songs</string>
     <string name="report_bug">Report A Bug</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
