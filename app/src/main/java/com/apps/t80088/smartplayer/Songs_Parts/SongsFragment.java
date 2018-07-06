@@ -3,6 +3,8 @@ package com.apps.t80088.smartplayer.Songs_Parts;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,30 +12,14 @@ import android.view.ViewGroup;
 
 import com.apps.t80088.smartplayer.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link SongsFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link SongsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class SongsFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     public SongsFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SongsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static SongsFragment newInstance(String param1, String param2) {
         SongsFragment fragment = new SongsFragment();
         Bundle args = new Bundle();
@@ -53,7 +39,17 @@ public class SongsFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_songs, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ArrayList<String> songs = new ArrayList<>();    // ToDo: Change later to song class
+        for(int i=0;i<30;i++)
+            songs.add("Song"+i);
+        SongsLayout table = getView().findViewById(R.id.table);
+        table.addSongs(songs);
+
+    }
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -88,7 +84,6 @@ public class SongsFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }
