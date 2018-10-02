@@ -1,11 +1,16 @@
 package com.apps.t80088.smartplayer;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -26,8 +31,19 @@ public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, AlbumFragment.OnFragmentInteractionListener, ArtistFragment.OnFragmentInteractionListener, SongsFragment.OnFragmentInteractionListener, PlaylistsFragment.OnFragmentInteractionListener {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        // At startup, before doing anything, we need to make sure the user has given us permission to access their files.
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != this.getPackageManager().PERMISSION_GRANTED) {
+            // Permission is not granted
+            // TODO - Need to add some sort of reminder here for them to fuck off
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+            }
+        }
+
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -122,5 +138,22 @@ public class HomePage extends AppCompatActivity
     @Override
     public void onFragmentInteraction(Uri uri) {
         // Do Something Later On
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 0: {   // Filesystem
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Throw up a toast to thank them
+                    Toast.makeText(this, "<3", Toast.LENGTH_SHORT).show();
+                } else {
+                    // If you deny it permissions im just crashing the app, fuck you.
+                    Error shit = new Error("You can't use this app without that permission, dumbass");
+                    throw shit;
+                }
+                return;
+            }
+            // If needed other perms go here
+        }
     }
 }

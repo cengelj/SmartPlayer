@@ -39,7 +39,7 @@ public class AlbumLayout extends TableLayout {
             row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
             ImageButton leftAlbum = new ImageButton(context);
-            leftAlbum.setImageResource(R.drawable.ic_jtgsafetravels);
+            leftAlbum.setImageResource(R.drawable.ic_album);
             leftAlbum.setScaleType(ImageView.ScaleType.FIT_CENTER);
             leftAlbum.setLayoutDirection(LAYOUT_DIRECTION_RTL);
             leftAlbum.setBackgroundColor(Color.TRANSPARENT);

@@ -50,7 +50,7 @@ public class ArtistLayout extends TableLayout {
 
             if(i+1 < artists.size()){               // Ensure no nullpointer exception due to odd number
                 Button rightArtist = new Button(getContext());
-                rightArtist.setBackgroundResource(R.drawable.ic_jtgsafetravels);
+                rightArtist.setBackgroundResource(R.drawable.ic_album);
                 rightArtist.setText(artists.get(i+1));
                 rightArtist.setTextAlignment(TEXT_ALIGNMENT_CENTER);
                 rightArtist.setTextColor(Color.GRAY);
