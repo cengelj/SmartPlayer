@@ -4,14 +4,10 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -27,9 +23,14 @@ import com.apps.t80088.smartplayer.Artists_Parts.ArtistFragment;
 import com.apps.t80088.smartplayer.Playlist_Parts.PlaylistsFragment;
 import com.apps.t80088.smartplayer.Songs_Parts.SongsFragment;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, AlbumFragment.OnFragmentInteractionListener, ArtistFragment.OnFragmentInteractionListener, SongsFragment.OnFragmentInteractionListener, PlaylistsFragment.OnFragmentInteractionListener {
-
+    public Library library;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -37,12 +38,28 @@ public class HomePage extends AppCompatActivity
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != this.getPackageManager().PERMISSION_GRANTED) {
             // Permission is not granted
             // TODO - Need to add some sort of reminder here for them to fuck off
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE))
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
-            } else {
+            else
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
-            }
         }
+        // Perform first-time setup
+        // TODO - Need to fix this section
+        File musicDir = new File(Environment.getExternalStorageDirectory().getPath()+"/Music");
+        File lib = new File(getFilesDir(), "library");
+        if(lib.isFile()){
+            // Import it
+            try{
+                ObjectInput in = new ObjectInputStream(new FileInputStream(lib));
+                library = (Library)(in.readObject());
+                in.close();
+            }
+            catch(Exception e){e.printStackTrace();}
+        }
+        else
+            Library.getLibrary().setUpLibrary(musicDir);
+        library = Library.getLibrary();
+        library.printLibrary();
 
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
